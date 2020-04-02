@@ -1,0 +1,190 @@
+{%load static%}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>covid19 detection</title>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <style>
+        article,
+        aside,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+        #f1{
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        .height(400);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="py-2 bg-info text-white">
+        <a class="navbar-brand pl-1">COVID-19 DETECTOR</a>
+        <form class="form-inline">
+        </form>
+    </nav>
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Suggestion!</strong> Please, only select the image of chest xray!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="container mx-5 my-2">
+        <div class="card">
+            <div class="card-body text-center text-uppercase font-weight-bold bg-light">
+                Coronavirus Detection Using Chest Xray
+            </div>
+        </div>
+    </div>
+    <div class="container mx-5 mt-3">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input required type="file" onchange="readURL(this);" name="document" class="custom-file-input"
+                        id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Detect</button>
+                </div>
+            </div>
+            <div class="container">
+                <img class="rounded" id="blah" src="#" alt="your image" />
+            </div>
+            <!-- <input type='file' onchange="readURL(this);" /> -->
+            <!-- <img id="blah" src="#" alt="your image" /> -->
+            <!-- <img src="{%static '2.jpg'%}"> -->
+            <!-- <input type="file" name="document" />
+                        <button type="submit">Upload</button> -->
+        </form>
+    </div>
+
+    <div class="container mx-5 my-2">
+        <div class="card">
+            <h5 class="card-header">Predicted Result</h5>
+            <div class="card-body">
+                <h5 class="card-title">Coronavirus:-</h5>
+                <p class="card-text text-danger">{{  result }}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- Footer -->
+<footer id = "f1" class="page-footer font-small teal pt-4 bg-info text-white mb-0">
+
+    <!-- Footer Text -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase font-weight-bold">Disclaimer</h5>
+          <p>Accuracy of this neural net is not 100%. it's only trained through 170 samples of infected people.Moreover, it's mainly made for educational purpose so please don't totally depend on it.</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 mb-md-0 mb-3">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase font-weight-bold">Thanks</h5>
+          <p>I have trained CNN using images of patient's chest-xray whom are infected by coronavirus. This neural network can predict that patient is infected by coronavirus or not by using only patient's xray of chest.</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Text -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a class="text-white" href="https://github.com/darshakpranpariya">https://github.com/darshakpranpariya</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+<!-- </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} <img src="{%static '2.jpg'%}"> {% endcomment %}
+        <input type="file" name="document" />
+        <button type="submit">Upload</button>
+    </form>
+    {{result}}
+</body>
+
+</html>  -->
