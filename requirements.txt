@@ -17,5 +17,4 @@ Pillow==6.1.0
 
 tensorflow==2.0.0rc0
 
-tf-nightly==1.15.0.dev20190821
 whitenoise==5.0.1
