@@ -48,6 +48,7 @@ decorator==4.4.0
 defusedxml==0.6.0
 distlib==0.3.0
 distributed==2.1.0
+dj-database-url==0.5.0
 Django==3.0.4
 docutils==0.14
 entrypoints==0.3
@@ -145,6 +146,7 @@ prometheus-client==0.7.1
 prompt-toolkit==2.0.9
 protobuf==3.9.1
 psutil==5.6.3
+psycopg2==2.8.4
 py==1.8.0
 pycodestyle==2.5.0
 pycosat==0.6.3
