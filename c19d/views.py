@@ -25,8 +25,8 @@ def index(request):
         answer = {"result":""}
         ob = IM(Img=request.FILES['document'])
         ob.save()
-        print("images/" + str(request.FILES['document']))
-        ia = cv2.imread("images/" + str(request.FILES['document']), cv2.IMREAD_GRAYSCALE)
+        print("static/images/" + str(request.FILES['document']))
+        ia = cv2.imread("static/images/" + str(request.FILES['document']), cv2.IMREAD_GRAYSCALE)
         na = cv2.resize(ia, (50, 50))
         t = np.array(cv2.resize(ia, (50, 50)).reshape(-1, 50, 50, 1))
         t = tf.cast(t, tf.float32)
@@ -39,6 +39,6 @@ def index(request):
             answer["result"]="Infected by coronavirus"
             # print("Infected by coronavirus")
         ob.delete()
-        os.remove("images/" + str(request.FILES['document']))
+        os.remove("static/images/" + str(request.FILES['document']))
         return render(request,"index.html",answer)
     return render(request, 'index.html')
