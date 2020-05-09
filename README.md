@@ -10,3 +10,11 @@ covid19-chestxray-dataset:-
 https://github.com/ieee8023/covid-chestxray-dataset
 
 Thanks.
+
+# How to run...
+
+open cmd in specific clon directory and then execute two command given below,
+
+1) pip install requirement.txt
+2) python manage.py runserver
+
