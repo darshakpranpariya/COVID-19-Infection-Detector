@@ -15,6 +15,6 @@ Thanks.
 
 open cmd in specific clon directory and then execute two command given below,
 
-1) pip install requirement.txt
+1) pip install -r requirement.txt
 2) python manage.py runserver
 
